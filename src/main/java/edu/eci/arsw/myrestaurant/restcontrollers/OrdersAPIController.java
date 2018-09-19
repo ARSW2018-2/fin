@@ -22,7 +22,9 @@ import edu.eci.arsw.myrestaurant.model.ProductType;
 import edu.eci.arsw.myrestaurant.model.RestaurantProduct;
 import edu.eci.arsw.myrestaurant.services.RestaurantOrderServices;
 import edu.eci.arsw.myrestaurant.services.RestaurantOrderServicesStub;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -51,12 +53,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 
     @RestController
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/orders")
 public class OrdersAPIController {
     @Autowired
      RestaurantOrderServices mOrdenes;
     
-    @CrossOrigin("*")
+    
     @RequestMapping(value="/{numTable}",method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<?> getOrdersByTable(@PathVariable Integer numTable){
         try {
@@ -93,7 +96,14 @@ public class OrdersAPIController {
                     new AnnotationConfigApplicationContext(OrdersRestaurantConfig.class);
                 RestaurantOrderServices  re=cxt.getBean(RestaurantOrderServicesStub.class) ;
                 //Set<Integer> data = re.getTablesWithOrders();
-                Map<Integer, Order> data = re.getTableOders();
+                Map<Integer, Order> data1 = re.getTableOders();
+                List<Order> data = new ArrayList<Order>();
+                for (int i=0; i<data1.size();i++){
+                    data.add(i, data1.get(i));
+          
+                }
+                
+                
                 return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
 
                 

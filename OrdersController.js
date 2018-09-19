@@ -27,7 +27,7 @@ var orders =[ {
 	  // Crea un elemento <table> y un elemento <tbody>
 	  var tabla   = document.createElement("table");
 	  var tblBody = document.createElement("tbody");
-	  var numOrder=orders.length -1;
+	  var numOrder=orders.length-1 ;
 	  // Crea las celdas
 	  
 	for (u=-1;u<numOrder ; u++ ){  
@@ -72,24 +72,24 @@ var orders =[ {
 	}
 	function addOrder(){
 
-	orders.push( {
-		"order_id": 1,
-		"table_id": 1,
-		"products": [{
-				"product": "loc",
-				"quantity": 5,
-				"price": "$9.000"
-			},
-			{
-				"product": "HO",
-				"quantity": 5,
-				"price": "$1.4300"
-			},{
-				"product": "KE",
-				"quantity": 11,
-				"price": "$1.300"
+		orders.push( {
+			"order_id": 99,
+			"table_id": 45,
+			"products": [{
+					"product": "loc",
+					"quantity": 5,
+					"price": "$9.000"
+				},
+				{
+					"product": "HO",
+					"quantity": 5,
+					"price": "$1.4300"
+				},{
+					"product": "KE",
+					"quantity": 11,
+					"price": "$1.300"
 			
-			}
+				}
 				]
 	});
 	var numOrder=orders.length -1;
@@ -169,7 +169,9 @@ var orders =[ {
 
 	        await axios.get( "http://localhost:8080/orders/or")
            .then(function (response) {
+				
                 orders=response.data
+				genera_tabla()
            })
            .catch(function (error) {
              console.log('There is a problem with our servers. We apologize for the inconvince, please try again later', error.message);
@@ -182,7 +184,7 @@ var orders =[ {
     }
 	
     async function getPrice(p){
-          await axios.get( "http://localhost:8080/orders/"+p)
+          await axios.get( "http://localhost:8080/orders/")
                    .then( function (response) {
                         product=response.data
                    })
