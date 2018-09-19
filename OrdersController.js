@@ -160,18 +160,12 @@ var orders =[ {
 	var orderControler ={
 		
 		getOrders: function(){
-			
-			
-			
-		}
-		
-		
-		
-		
+	
+		}	
 	};
 	
 	
-	function getOrders(){
+	async function getOrders(){
 
 	        await axios.get( "http://localhost:8080/orders/or")
            .then(function (response) {
@@ -185,7 +179,7 @@ var orders =[ {
              // always executed
            });
 
-    }();
+    }
 	
     async function getPrice(p){
           await axios.get( "http://localhost:8080/orders/"+p)
