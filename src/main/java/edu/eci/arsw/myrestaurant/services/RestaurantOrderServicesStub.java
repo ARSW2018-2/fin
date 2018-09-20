@@ -5,6 +5,8 @@ import edu.eci.arsw.myrestaurant.model.Order;
 import edu.eci.arsw.myrestaurant.model.RestaurantProduct;
 import edu.eci.arsw.myrestaurant.beans.BillCalculator;
 import edu.eci.arsw.myrestaurant.model.ProductType;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -79,6 +81,11 @@ public class RestaurantOrderServicesStub implements RestaurantOrderServices {
             return calc.calculateBill(tableOrders.get(tableNumber), productsMap);
         }
     }
+  
+
+        
+        
+    
     @Override
     public Map<Integer, Order> getTableOders(){
         return tableOrders;
@@ -115,5 +122,6 @@ public class RestaurantOrderServicesStub implements RestaurantOrderServices {
 
     }
 
+  
     
 }

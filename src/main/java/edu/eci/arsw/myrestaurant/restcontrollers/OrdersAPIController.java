@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -98,11 +99,35 @@ public class OrdersAPIController {
                 //Set<Integer> data = re.getTablesWithOrders();
                 Map<Integer, Order> data1 = re.getTableOders();
                 List<Order> data = new ArrayList<Order>();
-                for (int i=0; i<data1.size();i++){
-                    data.add(i, data1.get(i));
-          
-                }
                 
+                //for (int i=0; i<data1.size();i++){
+                for (Entry<Integer, Order> jugador : data1.entrySet()){
+                    
+                    data.add(jugador.getValue());
+         
+                }
+
+                return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
+
+                
+        } catch (Exception ex) {
+                Logger.getLogger(OrdersAPIController.class.getName()).log(Level.SEVERE, null, ex);
+                return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }  
+    
+    
+    }
+    
+       @RequestMapping(value="/names",method = RequestMethod.GET)
+    public ResponseEntity<?> getAllName(){
+             try {
+                ApplicationContext cxt = 
+                    new AnnotationConfigApplicationContext(OrdersRestaurantConfig.class);
+                RestaurantOrderServices  re=cxt.getBean(RestaurantOrderServicesStub.class) ;
+                Set<String> data = re.getAvailableProductNames();
+                
+                Map<Integer, Order> data1 = re.getTableOders();
+//                List<Order> data = new ArrayList<Order>();
                 
                 return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
 
@@ -114,6 +139,8 @@ public class OrdersAPIController {
     
     
     }
+    
+    
     
 
     @RequestMapping(path = "/{numTable}/total" , method = RequestMethod.GET)

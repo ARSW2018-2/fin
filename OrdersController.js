@@ -19,7 +19,7 @@ var orders =[ {
 			]
 		}
 	]
-	
+var names=[]	
 	function genera_tabla() {
 	  // Obtener la referencia del elemento body
 	  var body = document.getElementsByTagName("main")[0];
@@ -108,7 +108,8 @@ var orders =[ {
 			  // de la hilera de la tabla
 			  var celda = document.createElement("td");
 			  if (j==0) {
-				  var textoCelda = document.createTextNode("Product"+orders[numOrder].products[i].product);		  
+				  //var textoCelda = document.createTextNode("Product"+orders[numOrder].products[i].product);		  
+				  var textoCelda = document.createTextNode("Product"+orders[numOrder].products);		  
 				  }	  
 			if (j==1) {
 				  var textoCelda = document.createTextNode("Quantity"+orders[numOrder].products[i].quantity);		  
@@ -171,7 +172,7 @@ var orders =[ {
            .then(function (response) {
 				
                 orders=response.data
-				genera_tabla()
+				getName();
            })
            .catch(function (error) {
              console.log('There is a problem with our servers. We apologize for the inconvince, please try again later', error.message);
@@ -182,6 +183,26 @@ var orders =[ {
            });
 
     }
+	async function getName(){
+
+	        await axios.get( "http://localhost:8080/orders/or")
+           .then(function (response) {
+				
+                names=response.data
+				
+           })
+           .catch(function (error) {
+             console.log('There is a problem with our servers. We apologize for the inconvince, please try again later', error.message);
+
+           })
+           .then(function () {
+             // always executed
+           });
+
+    }
+	
+	
+	
 	
     async function getPrice(p){
           await axios.get( "http://localhost:8080/orders/")
