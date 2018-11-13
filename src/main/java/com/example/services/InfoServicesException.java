@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.myrestaurant.model;
+package com.example.services;
 
 /**
  *
- * @author hcadavid
+ * @author dicom
  */
-public enum ProductType {
-    DISH,DRINK;
+public class InfoServicesException extends Exception{
+    public InfoServicesException(String message){
+        super(message);
+    }
+    
 }

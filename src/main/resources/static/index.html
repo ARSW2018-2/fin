@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://getbootstrap.com/docs/4.0/examples/cover/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>ARSW-LAB7</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link ref="stylesheet" href="./css/boostrap-select.min.css">
+    <!-- Custom styles for this template -->
+    <link href="./css/cover.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+  </head>
+  <body class="text-center"onload="">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Informacio sobre empresas</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="https://getbootstrap.com/docs/4.0/examples/cover/#">Home</a>
+            <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/cover/#">Features</a>
+            <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/cover/#">Contact</a>
+          </nav>
+        </div>
+      </header>
+      <main role="main" class="inner cover">
+           <form>   
+                Compañia:<input id="x" type="text"/>
+                <button id="sendNum" onclick="company().getEmpresa()">Send point</button>
+                <select id = "id"  onchange="">
+                    <option value="intraDia">Seleccionar</option>
+                    <option value="intraDia">Intra-dia</option>
+                    <option value="Diaria">Diaria</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Mensual">Mensual</option>
+                </select>
+            </form>
+	<ul class="list-group">
+            <table>
+		<thead>
+                    <td>   
+			<th>Quantity</th>
+			<th>Price</th>                      
+                    </td>
+		</thead>
+                <tbody>
+                    <input type="button" value="Genera una tabla" onclick="genera_tabla()">
+                    <td id='Name'></td>
+                    <td id='Quantity'>
+                    <td id='Price'>	</tr>
+		</tbody>
+            </table>
+        <p class="lead">
+            <p class="lead">Consulta la informacion de la empresa que deseas conocer.</p>
+        </p>
+      </main>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/OrdersController.js"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>                
+</body></html>
