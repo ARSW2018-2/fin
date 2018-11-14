@@ -5,6 +5,9 @@
  */
 
 package com.example.restController;
+import com.example.MongoDb.Apliccation;
+import com.example.MongoDb.Compania;
+import com.example.MongoDb.CompanyRepository;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.services.InformationServices;
 import java.util.HashMap;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  *
@@ -27,7 +32,12 @@ import java.util.HashMap;
 @RestController
 @RequestMapping(value = "/info")
 @Service
+@SpringBootApplication
 public class CompaniaAPIController {
+    
+
+    @Autowired
+    Apliccation base;
     
     @Autowired
     InformationServices infoServices;
@@ -37,9 +47,12 @@ public class CompaniaAPIController {
     @RequestMapping(method = RequestMethod.GET,value="/{frecuencia}/{compania}")
     public ResponseEntity<?> getOrders(@PathVariable("frecuencia") String frecuencia, @PathVariable("compania") String compania){
         try{
-            if(empresas.containsKey(compania)){
-                return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
+            //if(empresas.containsKey(compania)){
+            if(base.founRegister(compania)){
+                //return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
+                return new ResponseEntity<>(base.getRegister(compania),HttpStatus.ACCEPTED);
             }else{
+                base.almacenar(compania,infoServices.getInfo(frecuencia,compania));
                 empresas.put(compania,infoServices.getInfo(frecuencia,compania));
                 return new ResponseEntity<>(infoServices.getInfo(frecuencia,compania),HttpStatus.ACCEPTED);
             }
@@ -48,4 +61,7 @@ public class CompaniaAPIController {
             return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
         }
     }
+
+
+    
 }
