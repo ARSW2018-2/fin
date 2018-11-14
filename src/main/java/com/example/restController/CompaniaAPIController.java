@@ -5,8 +5,6 @@
  */
 
 package com.example.restController;
-
-
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.services.InformationServices;
-
-
+import java.util.HashMap;
 
 /**
  *
@@ -34,20 +31,21 @@ public class CompaniaAPIController {
     
     @Autowired
     InformationServices infoServices;
+                    //CIudad-frecuencia                //Cudad-frecuencia
+    private HashMap <String, String> empresas = new HashMap <String, String> ();
     
     @RequestMapping(method = RequestMethod.GET,value="/{frecuencia}/{compania}")
     public ResponseEntity<?> getOrders(@PathVariable("frecuencia") String frecuencia, @PathVariable("compania") String compania){
         try{
-            return new ResponseEntity<>(infoServices.getInfo(frecuencia,compania),HttpStatus.ACCEPTED);
+            if(empresas.containsKey(compania)){
+                return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
+            }else{
+                empresas.put(compania,frecuencia);
+                return new ResponseEntity<>(infoServices.getInfo(frecuencia,compania),HttpStatus.ACCEPTED);
+            }
         } catch (Exception e) {
             Logger.getLogger(CompaniaAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
         }
     }
 }
-
-
-
-
-
-

@@ -32,16 +32,13 @@ public class HttpConnection extends Thread{
     private String url;
     private String result;
 
-    
     public String getResult() throws IOException {
         return result;
     }
     
-
     @Override
     public void run(){
         try {
-            System.out.println("que url se pasa"+url);
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("GET");
@@ -50,23 +47,17 @@ public class HttpConnection extends Thread{
             //The following invocation perform the connection implicitly before getting the code
             int responseCode = con.getResponseCode();
             System.out.println("GET Response Code :: " + responseCode);
-            
             if (responseCode == HttpURLConnection.HTTP_OK) { // success
                 BufferedReader in = new BufferedReader(new InputStreamReader(
                         con.getInputStream()));
-                String inputLine;
-                
-                
+                String inputLine;                
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
                 }
                 in.close();
-                
-                // print result
             } else {
                 System.out.println("GET request not worked");
-            }
-            
+            }       
             System.out.println("GET DONE");
             System.out.println(response.toString());
             result= response.toString();
@@ -76,8 +67,7 @@ public class HttpConnection extends Thread{
             Logger.getLogger(HttpConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
+    
     public void connect(String frecuencia, String compania) {
         url=pv.getUrl(frecuencia, compania);
     }
