@@ -21,9 +21,9 @@ import com.example.services.InformationServices;
  *
  * @author dicom
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes={com.example.Main.class})
-public class InfoServicesStubTest {
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes={com.example.Main.class})
+public class InfoServicesStubTest {/*
     @Autowired
     private HttpConnection coneccion1;
     @Autowired
@@ -51,6 +51,6 @@ public class InfoServicesStubTest {
         } catch (IOException ex) {
             Logger.getLogger(HttpConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 }
 

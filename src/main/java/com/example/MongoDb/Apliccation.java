@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
  *
  * @author 2098325
  */
+//@SpringBootApplication
 public class Apliccation implements CommandLineRunner {
     @Autowired
     private CompanyRepository repositorio;
