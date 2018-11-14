@@ -1,43 +1,27 @@
-    var empresa={};
-    var ciudad= {};
-    var tiempo={};
+   var Company=(function(){
 
-function company() {
-
-    function getEmpresa(){
-        var empres=document.getElementById("x").value;
-        var tiemp=document.getElementById("id").value;
-        alert(tiemp);
-        alert(empres);
-   
-        axios.get('/info/'+tiemp+"/"+empres).then(function (response) {
-                console.log(response.data)
-                alert(response.data);
-                ciudad=response.data;
-                alert(ciudad);
-            })
-           .catch(function (error) {
-                console.log(error);
-            });
+    var getEmpresa=function(empresa,tiempo,llama){
     
-    }
-    function getVal(){
-        alert(ciudad);
-        return ciudad;
-    }
-    
-
-
+    axios.get('/info/'+tiempo+"/"+empresa).then(function (response) {
+            llama.Eraser();
+            console.log(response.data);                
+            llama.exito(response.data);
+          
+        })
+        .catch(function (error) {
+            
+            console.log(error);
+        });
+    };
 
     return {
-        getEmpresa:getEmpresa,
-        getVal:getVal
+
+        getEmpresa:getEmpresa
     };
-    
-    
-    
-}
-var compan=company();
-console.log(compan);
+    })(); 
+   
+   
+   
+   
 
 

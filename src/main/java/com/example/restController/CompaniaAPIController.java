@@ -32,7 +32,7 @@ public class CompaniaAPIController {
     @Autowired
     InformationServices infoServices;
                     //CIudad-frecuencia                //Cudad-frecuencia
-    private HashMap <String, String> empresas = new HashMap <String, String> ();
+    private HashMap <String, Object> empresas = new HashMap <String, Object> ();
     
     @RequestMapping(method = RequestMethod.GET,value="/{frecuencia}/{compania}")
     public ResponseEntity<?> getOrders(@PathVariable("frecuencia") String frecuencia, @PathVariable("compania") String compania){
@@ -40,7 +40,7 @@ public class CompaniaAPIController {
             if(empresas.containsKey(compania)){
                 return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
             }else{
-                empresas.put(compania,frecuencia);
+                empresas.put(compania,infoServices.getInfo(frecuencia,compania));
                 return new ResponseEntity<>(infoServices.getInfo(frecuencia,compania),HttpStatus.ACCEPTED);
             }
         } catch (Exception e) {

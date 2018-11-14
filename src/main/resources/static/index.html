@@ -13,7 +13,14 @@
     <!-- Custom styles for this template -->
     <link href="./css/cover.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <script type="text/javascript">
+     function anular(e) {
+          tecla = (document.all) ? e.keyCode : e.which;
+          return (tecla != 13);
+     }
+    </script>
   </head>
+
   <body class="text-center"onload="">
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
@@ -27,9 +34,9 @@
         </div>
       </header>
       <main role="main" class="inner cover">
-           <form>   
-                Compañia:<input id="x" type="text"/>
-                <button id="sendNum" type="button" onclick="company().getEmpresa()">Send point</button>
+           <form action="procesar.php" onkeypress="return anular(event)">   
+                Compañia:<input id="x" type="text" name="company"/>
+                <button id="sendNum" type="button" onclick="ConsultControladorTabla.MostrarInfo()">Send point</button>
                 <select id = "id"  onchange="">
                     <option value="intraDia">Seleccionar</option>
                     <option value="intraDia">Intra-dia</option>
@@ -38,21 +45,12 @@
                     <option value="Mensual">Mensual</option>
                 </select>
             </form>
-	<ul class="list-group">
-            <table>
-		<thead>
-                    <td>   
-			<th>Quantity</th>
-			<th>Price</th>                      
-                    </td>
-		</thead>
-                <tbody>
-                    <input type="button" value="Genera una tabla" onclick="genera_tabla()">
-                    <td id='Name'></td>
-                    <td id='Quantity'>
-                    <td id='Price'>	</tr>
-		</tbody>
+          
+          <table id="tabla" border="2">
             </table>
+	<ul class="list-group">
+    
+      
         <p class="lead">
             <p class="lead">Consulta la informacion de la empresa que deseas conocer.</p>
         </p>
