@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.services.InformationServices;
 import java.util.HashMap;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  *
@@ -29,13 +30,9 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/info")
-@Service
+//@Service
 //@SpringBootApplication
 public class CompaniaAPIController {
-    
-
-    @Autowired
-    Apliccation base;
     
     @Autowired
     InformationServices infoServices;
@@ -46,13 +43,15 @@ public class CompaniaAPIController {
     public ResponseEntity<?> getOrders(@PathVariable("frecuencia") String frecuencia, @PathVariable("compania") String compania){
         try{
             //if(empresas.containsKey(compania)){
-            if(base.founRegister(compania)){
+            //if(base.founRegister(compania)){
+            if(infoServices.findAccion(compania)){
                 //return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
-                return new ResponseEntity<>(base.getRegister(compania),HttpStatus.ACCEPTED);
+                return new ResponseEntity<>(infoServices.getAcciones(frecuencia, compania),HttpStatus.ACCEPTED);
             }else{
-                base.almacenar(compania,infoServices.getInfo(frecuencia,compania));
-                empresas.put(compania,infoServices.getInfo(frecuencia,compania));
-                return new ResponseEntity<>(infoServices.getInfo(frecuencia,compania),HttpStatus.ACCEPTED);
+                //base.almacenar(compania,infoServices.getAcciones(frecuencia, compania));
+                infoServices.saveAcciones(compania, (String)infoServices.getAcciones(frecuencia,compania));
+                //empresas.put(compania,);
+                return new ResponseEntity<>(infoServices.getAcciones(frecuencia,compania),HttpStatus.ACCEPTED);
             }
         } catch (Exception e) {
             Logger.getLogger(CompaniaAPIController.class.getName()).log(Level.SEVERE, null, e);

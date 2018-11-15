@@ -5,10 +5,13 @@
  */
 package com.example.services;
 
+import com.example.MongoDb.Apliccation;
+import com.example.MongoDb.Compania;
 import com.example.conection.HttpConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,10 +22,13 @@ import org.springframework.stereotype.Service;
 public class InfoServicesStub implements InformationServices{
     @Autowired
     HttpConnection conection;
-   
+
+    
+    @Autowired
+    Apliccation repository;
     
     @Override
-    public Object getInfo(String frecuencia, String compania) throws InfoServicesException {
+    public Object getAcciones(String frecuencia, String compania) throws InfoServicesException {
         conection.connect(frecuencia, compania);
         try {
             conection.run();
@@ -35,5 +41,28 @@ public class InfoServicesStub implements InformationServices{
         }
         
     }
+
+
+
+    @Override
+    public String getNombreAcciones(String nombre) {
+        return repository.getRegister(nombre);
+    }
+
+    @Override
+    public Boolean findAccion(String compania) throws InfoServicesException {
+        return repository.founRegister(compania);
+    }
+
+    @Override
+    public void saveAcciones(String nombre, String datos) throws InfoServicesException {
+        try {
+            repository.almacenar(nombre, datos);
+        } catch (Exception ex) {
+            Logger.getLogger(InfoServicesStub.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     
 }

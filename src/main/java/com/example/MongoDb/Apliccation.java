@@ -7,13 +7,15 @@ package com.example.MongoDb;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author 2098325
  */
 //@SpringBootApplication
-public class Apliccation implements CommandLineRunner {
+@Service
+public class Apliccation {
     @Autowired
     private CompanyRepository repositorio;
     
@@ -29,17 +31,14 @@ public class Apliccation implements CommandLineRunner {
         if(repositorio.findByName(nombreCompania)!=null){
             resp=true;
         }
-        
+     
         return resp;
     }
-    public Compania getRegister(String Nombre){
+    public String getRegister(String Nombre){
+        //return new Compania();
         return repositorio.findByName(Nombre);
+       //return "";
    
     }
-    
-    @Override
-    public void run(String... strings) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+   
 }

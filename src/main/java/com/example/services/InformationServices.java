@@ -13,6 +13,9 @@ import com.example.services.InfoServicesException;
  */
 
 public interface InformationServices {
-    public Object getInfo(String frecuencia, String compania)throws InfoServicesException;
+    public Object getAcciones(String frecuencia, String compania)throws InfoServicesException;
+    public String getNombreAcciones(String nombre)throws InfoServicesException;
+    public Boolean findAccion(String compania)throws InfoServicesException;
+    public void saveAcciones(String nombre, String datos)throws InfoServicesException;
     
 }

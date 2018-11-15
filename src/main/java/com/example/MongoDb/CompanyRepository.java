@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface CompanyRepository extends MongoRepository<Compania,String>{
     
-    public Compania findByName(String nombreCompany);
-    public List<Compania> findByFrecuency(String Frecuencia);
+    public String findByName(String nombreCompany);
+    public List<String> findByFrecuency(String Frecuencia);
     
 }
