@@ -13,4 +13,4 @@ La aplicacion utiliza un API gratuito de ALPHAVANTAGE. Tiene respaldo de una bas
  
  
  
- ![](img/ClassDiagram.png)
+ ![](img/diagrama.png)
