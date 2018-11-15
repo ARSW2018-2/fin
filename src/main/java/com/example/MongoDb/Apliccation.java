@@ -28,16 +28,16 @@ public class Apliccation {
     
     public Boolean founRegister(String nombreCompania){
         Boolean resp=false;
-        if(repositorio.findByName(nombreCompania)!=null){
+        /*
+        if(repositorio.existsById(nombreCompania)){
             resp=true;
-        }
-     
+        }*/
         return resp;
     }
     public String getRegister(String Nombre){
         //return new Compania();
-        return repositorio.findByName(Nombre);
-       //return "";
+        //return repositorio.findByName(Nombre);
+       return "";
    
     }
    

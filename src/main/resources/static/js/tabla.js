@@ -3,8 +3,7 @@ var ConsultControladorTabla =(function(){
     var MostrarInfo=function(){
         var empresa=document.getElementById("x").value;
         var tiempo=document.getElementById("id").value;
-        alert(tiempo);
-        alert(empresa);
+
         var llamado ={
 
             exito: function(response){
