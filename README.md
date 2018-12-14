@@ -17,3 +17,8 @@ El cliente web al pasar los parametros (nombre de la pelicula y/o año), manda u
 
 
 Cesar Eduardo Lanos Camacho
+Diagrama de Despliege
+(img/Despliege.png) 
+
+Diagrama de paquetes.
+(img/diagrama.png)	

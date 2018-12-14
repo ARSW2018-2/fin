@@ -46,7 +46,9 @@ public class InfoServicesStubTest {
             String respuesta1 = coneccion1.getResult();
             String respuesta2 = coneccion2.getResult();
             String respuesta3 = coneccion3.getResult();
-            assertEquals(respuesta1.substring(0,125), "{\"Title\":\"The Avengers\",\"Year\":\"2012\",\"Rated\":\"PG-13\",\"Released\":\"04 May 2012\",\"Runtime\":\"143 min\"");
+            System.out.println("dsadsa"+respuesta1);
+            String g=respuesta1.substring(0,10);
+            assertEquals(g, "{\"Title\":\"The Avengers\",\"Year\":\"2012\",\"Rated\":\"PG-13\",\"Released\":\"04 May 2012\",\"Runtime\":\"143 min\"");
             assertEquals(respuesta2.substring(0,125), "{\"Title\":\"The Social Network\",\"Year\":\"2010\",\"Rated\":\"PG-13\",\"Released\":\"01 Oct 2010\",\"Runtime\":\"120 mi");
             assertEquals(respuesta3.substring(0,125), "{\"Title\":\"The Social Network\",\"Year\":\"2010\",\"Rated\":\"PG-13\",\"Released\":\"01 Oct 2010\",\"Runtime\":\"120 mi");
         } catch (IOException ex) {
