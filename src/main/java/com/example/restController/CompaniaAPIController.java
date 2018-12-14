@@ -50,20 +50,14 @@ public class CompaniaAPIController {
     @RequestMapping(method = RequestMethod.GET,value="/{pelicula}/{ano}")
     public ResponseEntity<?> getOrders(@PathVariable("pelicula") String pelicula, @PathVariable("ano") String ano){
         try{
-            System.out.println("miremos pelicula"+pelicula+"AÑO"+ano);
-            System.out.println("mipeli"+pelicula);
              Gson gson = new Gson();
             String[] palabras = pelicula.split(" ");
             String pelfin="";
             
             for (String palabra : palabras)
             {
-                pelfin+=palabra+"+";
-                System.out.println(palabra);
-            
+                pelfin+=palabra+"+";           
             }
-            System.out.println("pelfin"+pelfin);
-
             if(infoServices.findAccion(pelfin)){
                 //return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
                 return new ResponseEntity<>(infoServices.getAcciones(pelfin, ano),HttpStatus.ACCEPTED);
@@ -82,8 +76,6 @@ public class CompaniaAPIController {
        @RequestMapping(method = RequestMethod.GET,value="/{pelicula}")
     public ResponseEntity<?> g(@PathVariable("pelicula") String pelicula){
         try{
-            System.out.println("miremos pelicula"+pelicula);
-            System.out.println("mipeli"+pelicula);
              Gson gson = new Gson();
             String[] palabras = pelicula.split(" ");
             String pelfin="";
@@ -91,11 +83,7 @@ public class CompaniaAPIController {
             for (String palabra : palabras)
             {
                 pelfin+=palabra+"+";
-                System.out.println(palabra);
-            
             }
-            System.out.println("pelfin"+pelfin);
-
             if(infoServices.findAccion(pelfin)){
                 //return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
                 return new ResponseEntity<>(infoServices.getAcciones(pelfin),HttpStatus.ACCEPTED);
@@ -109,8 +97,5 @@ public class CompaniaAPIController {
             Logger.getLogger(CompaniaAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
         }
-    }
-
-
-    
+    } 
 }
