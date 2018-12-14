@@ -78,6 +78,38 @@ public class CompaniaAPIController {
             return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
         }
     }
+    
+       @RequestMapping(method = RequestMethod.GET,value="/{pelicula}")
+    public ResponseEntity<?> g(@PathVariable("pelicula") String pelicula){
+        try{
+            System.out.println("miremos pelicula"+pelicula);
+            System.out.println("mipeli"+pelicula);
+             Gson gson = new Gson();
+            String[] palabras = pelicula.split(" ");
+            String pelfin="";
+            
+            for (String palabra : palabras)
+            {
+                pelfin+=palabra+"+";
+                System.out.println(palabra);
+            
+            }
+            System.out.println("pelfin"+pelfin);
+
+            if(infoServices.findAccion(pelfin)){
+                //return new ResponseEntity<>(empresas.get(compania),HttpStatus.ACCEPTED);
+                return new ResponseEntity<>(infoServices.getAcciones(pelfin),HttpStatus.ACCEPTED);
+            }else{
+                //base.almacenar(compania,infoServices.getAcciones(frecuencia, compania));
+                infoServices.saveAcciones(pelfin, (String)infoServices.getAcciones(pelfin));
+                //empresas.put(compania,);
+                return new ResponseEntity<>(infoServices.getAcciones(pelfin),HttpStatus.ACCEPTED);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(CompaniaAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
+        }
+    }
 
 
     

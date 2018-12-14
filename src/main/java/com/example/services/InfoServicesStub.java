@@ -42,7 +42,20 @@ public class InfoServicesStub implements InformationServices{
         
     }
 
-
+    @Override
+    public Object getAcciones(String frecuencia) throws InfoServicesException {
+        conection.connect(frecuencia);
+        try {
+            conection.run();
+            return conection.getResult();
+            
+        } catch (Exception e) {
+            Logger.getLogger(InfoServicesStub.class.getName()).log(Level.SEVERE,null, e);
+            throw new InfoServicesException("Error conectando");
+            
+        }
+        
+    }
 
     @Override
     public String getNombreAcciones(String nombre) {

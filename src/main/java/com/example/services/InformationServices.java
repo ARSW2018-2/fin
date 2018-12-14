@@ -17,5 +17,6 @@ public interface InformationServices {
     public String getNombreAcciones(String nombre)throws InfoServicesException;
     public Boolean findAccion(String compania)throws InfoServicesException;
     public void saveAcciones(String nombre, String datos)throws InfoServicesException;
+    public Object getAcciones(String frecuencia) throws InfoServicesException ;
     
 }

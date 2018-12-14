@@ -71,5 +71,8 @@ public class HttpConnection extends Thread{
     public void connect(String frecuencia, String compania) {
         url=pv.getUrl(frecuencia, compania);
     }
+    public void connect(String frecuencia) {
+        url=pv.getUrl(frecuencia);
+    }
 
 }

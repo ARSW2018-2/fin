@@ -25,7 +25,16 @@ public class AlphaVantage implements Provider{
         return "http://www.omdbapi.com/?t="+pelicula+"&y="+año+"&apikey=fc4de1fa";
     }
 
+    @Override
+    public String getUrl(String pelicula) {
+        String r="http://www.omdbapi.com/?t="+pelicula+"&apikey=fc4de1fa";
+        
 
+
+        System.out.println("que url esta mandado"+r);
+        
+        return "http://www.omdbapi.com/?t="+pelicula+"&apikey=fc4de1fa";
+    }
     
 }
 

@@ -15,5 +15,6 @@ import org.springframework.stereotype.Service;
 public interface Provider {
     
     public String getUrl(String frecuencia, String compania);
+    public String getUrl(String pelicula);
     
 }
