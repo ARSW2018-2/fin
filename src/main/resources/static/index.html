@@ -35,24 +35,36 @@
       </header>
       <main role="main" class="inner cover">
            <form action="procesar.php" onkeypress="return anular(event)">   
-                Compañia:<input id="x" type="text" name="company"/>
+                Pelicula:<input id="x" type="text" name="peli"/>
+                Año:<input id="año" type="text" name="peliname"/>
                 <button id="sendNum" type="button" onclick="ConsultControladorTabla.MostrarInfo()">Send point</button>
-                <select id = "id"  onchange="">
-                    <option value="intraDia">Seleccionar</option>
-                    <option value="intraDia">Intra-dia</option>
-                    <option value="Diaria">Diaria</option>
-                    <option value="Semanal">Semanal</option>
-                    <option value="Mensual">Mensual</option>
-                </select>
+                
             </form>
-          
+           <form action="procesar.php" onkeypress="return anular(event)">   
+
+               <h3 style="text-align:center" id="title">Ttitulo :</h3>
+               <h3 style="text-align:center" id="year">Año :</h3>
+               <h3 style="text-align:center" id="released">Estreno </h3>
+               <h3 style="text-align:center" id="plot">Describcion: </h3>
+               <h3 style="text-align:center" id="runtime">Duracion: </h3>
+
+
+                <button id="sendNum" type="button" onclick="ConsultControladorTabla.MostrarInfo()">Send point</button>
+                
+            </form>          
           <table id="tabla" border="2">
+              
+              
+              
+              
+              
             </table>
+          
 	<ul class="list-group">
     
       
         <p class="lead">
-            <p class="lead">Consulta la informacion de la empresa que deseas conocer.</p>
+            <p class="lead">Consulta la informacion de la pelicula que deseas conocer.</p>
         </p>
       </main>
       <footer class="mastfoot mt-auto">

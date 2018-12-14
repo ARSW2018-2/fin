@@ -1,8 +1,8 @@
 var ConsultControladorTabla =(function(){
 
     var MostrarInfo=function(){
-        var empresa=document.getElementById("x").value;
-        var tiempo=document.getElementById("id").value;
+        var pelicula=document.getElementById("x").value;
+        var ano=document.getElementById("año").value;
 
         var llamado ={
 
@@ -21,36 +21,11 @@ var ConsultControladorTabla =(function(){
                 var tabla= document.getElementById('tabla');
                 for(property in lista){
                     var objeto=lista[property];
+                    alert(objeto);
                     console.log(property);
-                    if(first==0){
-                        var encabezado =document.createElement('tr');
-                        var m=document.createElement('td');
-                        m.appendChild(document.createTextNode("No"));
-                        encabezado.appendChild(m);
-                        for(nombre in objeto){
-                            var propiedad=document.createElement('td');
-                            propiedad.appendChild(document.createTextNode(nombre));
-                            encabezado.appendChild(propiedad);
-                        }
-                        primero=1;
-                        tabla.appendChild(encabezado);
-                    }
-                    var tr=document.createElement('tr');
-                    var num =document.createElement('td');
+                    
                     num.appendChild(document.createTextNode(property));
                     
-                    tr.appendChild(num);
-                    for(x in objeto){
-                        var td =document.createElement('td');
-                        var objetosub=objeto[x];
-                        
-                        for(y in objetosub){
-                            console.log(objetosub[y]);
-                            td.appendChild(document.createTextNode(objetosub[y]));
-                        }
-                        
-                        tr.appendChild(td);
-                    }
                     tabla.append(tr);
                 }
             },
@@ -63,7 +38,7 @@ var ConsultControladorTabla =(function(){
                 ta.removeChild(ta.childNodes[0]);  
             }
         };
-        Company.getEmpresa(empresa,tiempo,llamado);
+        Company.getEmpresa(pelicula,ano,llamado);
     };
     return{
         MostrarInfo:MostrarInfo
