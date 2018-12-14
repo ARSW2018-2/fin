@@ -21,9 +21,10 @@ import com.example.services.InformationServices;
  *
  * @author dicom
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(classes={com.example.Main.class})
-public class InfoServicesStubTest {/*
+@RunWith(SpringRunner.class)
+
+@SpringBootTest(classes={com.example.Main.class})
+public class InfoServicesStubTest {
     @Autowired
     private HttpConnection coneccion1;
     @Autowired
@@ -36,21 +37,21 @@ public class InfoServicesStubTest {/*
             
            
         try {
-            coneccion1.connect("Semanal","MSFT");
-            coneccion2.connect("Semanal","MSFT");
-            coneccion3.connect("Semanal","MSFT");
+            coneccion1.connect("The Avengers");
+            coneccion2.connect("The Social Network","2010");
+            coneccion3.connect("The Social Network");
             coneccion1.run();
             coneccion2.run();
             coneccion3.run();
             String respuesta1 = coneccion1.getResult();
             String respuesta2 = coneccion2.getResult();
             String respuesta3 = coneccion3.getResult();
-            assertEquals(respuesta1.substring(0, 125), "{    \"Meta Data\": {        \"1. Information\": \"Weekly Prices (open, high, low, close) and Volumes\",        \"2. Symbol\": \"MSFT\"");
-            assertEquals(respuesta2.substring(0, 125), "{    \"Meta Data\": {        \"1. Information\": \"Weekly Prices (open, high, low, close) and Volumes\",        \"2. Symbol\": \"MSFT\"");
-            assertEquals(respuesta3.substring(0, 125), "{    \"Meta Data\": {        \"1. Information\": \"Weekly Prices (open, high, low, close) and Volumes\",        \"2. Symbol\": \"MSFT\"");
+            assertEquals(respuesta1.substring(0,125), "{\"Title\":\"The Avengers\",\"Year\":\"2012\",\"Rated\":\"PG-13\",\"Released\":\"04 May 2012\",\"Runtime\":\"143 min\"");
+            assertEquals(respuesta2.substring(0,125), "{\"Title\":\"The Social Network\",\"Year\":\"2010\",\"Rated\":\"PG-13\",\"Released\":\"01 Oct 2010\",\"Runtime\":\"120 mi");
+            assertEquals(respuesta3.substring(0,125), "{\"Title\":\"The Social Network\",\"Year\":\"2010\",\"Rated\":\"PG-13\",\"Released\":\"01 Oct 2010\",\"Runtime\":\"120 mi");
         } catch (IOException ex) {
             Logger.getLogger(HttpConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
 }
 
