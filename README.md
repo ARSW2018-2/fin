@@ -12,7 +12,7 @@ Y el API rest nos mostrara informacion acerca de la pelicula, año, descripcion 
 Si se desea conectar a la API deben poner la URL  y el nomrbre de la pelicula deseada y esta le regresara en formato JSON toda la info de la pelicula.
 
 
-El cliente web al pasar los parametros (nombre de la pelicula y/o año), manda una peticion por axios a la aplicacion en java, que recibe eso, genera una url con la api y la informacion suministrada y pide a omdbapi la informacion requerida, despues de esto obtiene en formato JSON la informaicon y la regresa al cliente wb y se puede visualizar por pantalla.
+El cliente web al pasar los parametros (nombre de la pelicula y/o año), manda una peticion por axios a la aplicacion en java, que recibe eso, genera una recurso con la api y la informacion suministrada y pide a omdbapi la informacion requerida, despues de esto obtiene en formato JSON la informaicon y la regresa al cliente wb y se puede visualizar por pantalla.
 
 
 
